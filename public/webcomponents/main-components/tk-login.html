@@ -1,0 +1,141 @@
+<link rel="import" href='/bower_components/iron-icons/iron-icons.html'>
+<link rel="import" href='/bower_components/fontawesome-iconset/fa-all.html'>
+<!--MATERIAL-->
+<link rel='import' href='/bower_components/paper-dialog/paper-dialog.html'/>
+<link rel="import" href='/bower_components/iron-flex-layout/iron-flex-layout.html'>
+<link rel='import' href='/bower_components/paper-input/paper-input.html'/>
+<link rel='import' href='/bower_components/paper-button/paper-button.html'/>
+<link rel="import" href='/bower_components/fontawesome-iconset/fa-all.html'>
+
+<dom-module id="tk-login">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        align-items: center;
+
+      }
+      .flex {
+      @apply(--layout-horizontal);
+      }
+      .flex-wrap {
+      @apply(--layout-vertical);
+      @apply(--layout-wrap);
+        justify-content: center;
+      }
+      ul {
+        padding-left: 0px;
+        margin: 0px;
+      }
+      ul li {
+        list-style: none;
+        padding: 5px;
+      }
+      ul li a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        transition: color 0.3s linear;
+      }
+      ul li a:hover {
+        color: rgba(255, 255, 255, 1);
+      }
+      iron-icon {
+        width: 34px;
+        height: 34px;
+        padding-right: 7px;
+      }
+      .tk__facebook {
+        background-color:rgba(80, 101, 164, 0.9);
+        color: #fff;
+        font-weight: bold;
+        transition: background-color 0.3s linear;
+      }
+      .tk__facebook:hover {
+        background-color:rgba(80, 101, 164, 1);
+      }
+      .facebook__icon {
+        width: 20px;
+        height: 20px;
+      }
+      paper-dialog {
+        min-width: 400px;
+        padding: 0 20px 0 20px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      paper-button {
+        text-transform: inherit;
+      }
+
+      .separate {
+        margin: 15px 0 15px 0;
+        border-top: 1px solid #ddd;
+      }
+
+      h5 {
+        padding-top: 15px;
+        margin: 0px;
+      }
+
+      h5 a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #757575;
+      font-family: 'Montserrat', sans-serif;
+      }
+      h5 a:hover {
+     text-decoration: underline;
+      }
+      h5 .regi {
+        color: #fff;
+        background-color: rgba(38, 166, 139, 0.7);
+        padding: 5px 15px;
+        border-radius: 3px;
+        transition: background-color 0.3s linear;
+      }
+
+      h5 .regi:hover {
+        text-decoration: none;
+        background-color: rgba(38, 166, 139, 1);
+      }
+
+      small {
+        margin-top: 2px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+    </style>
+    <nav>
+      <ul class="flex">
+           <li> <a href="#" on-tap="openLoginModal"><iron-icon icon="account-circle"></iron-icon>Log in</a></li>
+    </nav>
+
+    <!--modal notlikeit-->
+    <paper-dialog class="loginModule" id="loginModal" with-backdrop>
+      <div class="tk__module flex-wrap">
+        <paper-button class="tk__facebook" raised> <iron-icon class="facebook__icon" icon="fa:facebook"></iron-icon> Log in</paper-button>
+        <small>(No publicaremos nada sin su consentimiento)</small>
+        <div class="separate">
+        <paper-input type="email" placeholder="Email" id="email"></paper-input>
+        <paper-input type="password" placeholder="Password" id="pass"></paper-input>
+        </div>
+        <h5><a class="regi" href="../../newuser.html">Regístrate</a></h5>
+        <h5><a href="#"> ¿Se te ha olvidado la contraseña?</a></h5>
+
+      </div>
+    </paper-dialog>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'tk-login',
+
+      openLoginModal: function(){
+        this.$.loginModal.open();
+      }
+
+    });
+  </script>
+</dom-module>

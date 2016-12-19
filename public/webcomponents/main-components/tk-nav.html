@@ -1,0 +1,142 @@
+<link rel='import' href='/bower_components/paper-dialog/paper-dialog.html'/>
+<link rel='import' href='/bower_components/paper-input/paper-input.html'/>
+
+
+<dom-module id="tk-nav">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        color: #fff;
+        align-items: center;
+        justify-content: flex-end;
+        width: 102px;
+        --paper-input-container-input: {
+           padding: 0 0 17px 40px;
+        font-size: 20px;
+         }
+      --paper-input-container-focus-color: #1ea58a;
+
+      }
+      iron-icon {
+        width: 30px;
+      height: 30px;
+      }
+      a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s linear;
+      }
+      a:hover {
+        color: rgba(255, 255, 255, 1);
+      }
+      .searchModule {
+        outline: none;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        z-index: 103;
+        margin: 0px;
+      }
+      .tk__module {
+        max-width: 60%;
+        margin: 10% auto;
+        position: relative;
+        height: 240px;
+      }
+      .close__btn {
+        top: 5px;
+        right: 5px;
+        color: rgba(30, 165, 138, 0.8);
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        transition: color 0.3s linear;
+      }
+      .close__btn:hover {
+        color: rgba(30, 165, 138, 1);
+      }
+      h2 {
+        text-align: center;
+        padding: 20px 0px;
+        font-size: 32px;
+        color: slategray;
+        font-family: 'Montserrat', sans-serif;
+      }
+      .flex-wrap {
+      @apply(--layout-vertical);
+      @apply(--layout-wrap);
+        justify-content: center;
+      }
+      form {
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      form .grey {
+        position: absolute;
+        left: 0px;
+        top: 28px;
+        color: #757575;
+      }
+
+      .imagen {
+        width: 170px;
+        height: 108px;
+        position: absolute;
+        top: -90px;
+        left: 50%;
+        margin-left: -85px;
+      }
+
+      .imagen img {
+       width: 100%;
+        height: 100%;
+      }
+
+      paper-dialog {
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+
+
+    </style>
+    <form>
+
+    <a href="#" on-tap="openSearch"> <iron-icon icon="search"></iron-icon></a>
+    </form>
+
+    <!--modal notlikeit-->
+    <paper-dialog class="searchModule" id="searchModal" with-backdrop>
+      <div class="tk__module flex-wrap">
+        <a class="close__btn" href="#"><iron-icon icon="clear" on-tap="closeSearch"></iron-icon></a>
+       <div class="imagen"> <img src="../img/search.png"></div>
+        <h2>What firm are you looking for?</h2>
+        <form>
+          <iron-icon class="grey" icon="search"></iron-icon>
+      <paper-input class="search__input" type="text" placeholder="Search" id="search"></paper-input>
+        </form>
+      </div>
+    </paper-dialog>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'tk-nav',
+
+      openSearch: function(){
+        this.$.searchModal.open();
+      },
+
+      closeSearch: function(){
+        this.$.searchModal.close();
+      }
+
+    });
+  </script>
+</dom-module>

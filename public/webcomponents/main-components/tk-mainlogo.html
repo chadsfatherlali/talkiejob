@@ -1,0 +1,35 @@
+<dom-module id="tk-mainlogo">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      h1 {
+        width: 200px;
+        height: 100%;
+        margin: 0px auto;
+        display: flex;
+        align-items: center;
+      }
+      .main--logo {
+        display: block;
+        width: 100%;
+        height: 48px;
+        background-image: url("../img/logo.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        text-indent: -9999px;
+      }
+    </style>
+<h1><a class="main--logo" href="../../index.html">Logo</a></h1>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'tk-mainlogo',
+
+    });
+  </script>
+</dom-module>

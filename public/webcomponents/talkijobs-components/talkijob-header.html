@@ -1,0 +1,41 @@
+<!--MAIN COMPONENTS-->
+<link rel="import" href="/webcomponents/main-components/tk-login.html">
+<link rel="import" href="/webcomponents/main-components/tk-mainlogo.html">
+<link rel="import" href="/webcomponents/main-components/tk-nav.html">
+<!--MATERIAL-->
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="talkijob-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: #13a489;
+        padding: 8px 10px 8px 10px;
+      }
+      .flex-just {
+        @apply(--layout-horizontal);
+      }
+      .flexchild {
+      @apply(--layout-flex);
+        justify-content: center;
+      }
+    </style>
+
+    <div class="container flex-just">
+      <tk-login></tk-login>
+      <tk-mainlogo class="flexchild"></tk-mainlogo>
+      <tk-nav></tk-nav>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'talkijob-header',
+
+
+    });
+  </script>
+</dom-module>

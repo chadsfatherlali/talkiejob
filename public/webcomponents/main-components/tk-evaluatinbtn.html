@@ -1,0 +1,151 @@
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+
+
+<dom-module id="tk-evaluationbtn">
+    <template>
+        <style>
+            :host {
+                display: block;
+                font-family: 'Montserrat', sans-serif;
+                color: slategray;
+            }
+
+            .thumb-up {
+                background-color: #1ea58a;
+                transition: background-color 0.1s linear;
+            }
+
+            .thumbs-up-down {
+                background-color: #4a3b88;
+                transition: background-color 0.1s linear;
+            }
+
+            .thumb-down {
+                background-color: #ea5e63;
+                transition: background-color 0.1s linear;
+            }
+
+            .grey {
+                background-color: #c0c0c0;
+            }
+
+            .flex {
+                @apply(--layout-horizontal);
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .evaluation__buttons {
+                 padding: 15px 25px 10px 25px;
+                position: relative;
+                z-index: 10;
+             }
+            .evaluation__buttons_def {
+                position: relative;
+                z-index: 1;
+            }
+
+
+            .evaluation__buttons_def .likeit {
+                position: absolute;
+                left: 10px;
+                display: block;
+                width: 84px;
+                transition: all 0.1s linear;
+            }
+
+            .movedownup {
+                top: -25px;
+                color: #fff;
+                background-color: #fff;
+                padding: 2px;
+                text-align: center;
+                border-radius: 4px;
+                transition: all 0.1s linear;
+            }
+
+            .movedown {
+                position: absolute;
+                top: -5px!important;
+                background-color: #4b81b1;
+                padding: 2px;
+                color: #fff;
+            }
+
+            .evaluation__buttons_def .wasok {
+                position: absolute;
+                left: 20px;
+                display: block;
+                width: 84px;
+                left: 50%;
+                margin-left: -42px;
+                transition: all 0.1s linear;
+            }
+
+            .evaluation__buttons_def .dontlike {
+                position: absolute;
+                right: 8px;
+                display: block;
+                width: 84px;
+                transition: all 0.1s linear;
+            }
+
+
+
+        </style>
+
+        <div class="evaluation__buttons flex">
+            <paper-fab class="thumb-up desactivebtn" icon='thumb-up' on-tap="clickbtns" data-value="thumb-up" data-likes="likeit" ></paper-fab>
+            <paper-fab class="thumbs-up-down desactivebtn" icon='thumbs-up-down' on-tap="clickbtns" data-value="thumbs-up-down" data-likes="wasok"></paper-fab>
+            <paper-fab class="thumb-down desactivebtn" icon='thumb-down' on-tap="clickbtns" data-value="thumb-down" data-likes="dontlike"></paper-fab>
+        </div>
+
+        <div class="evaluation__buttons_def flex">
+        <small class="likeit movedownup">me gusta</small>
+        <small class="wasok movedownup">más o menos</small>
+        <small class="dontlike movedownup">No me gusta</small>
+    </div>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'tk-evaluationbtn',
+            
+            properties: {},
+
+            clickbtns: function (e) {
+                var element = Polymer.dom(e).localTarget;
+                this.business.qualification = element.getAttribute('data-value');
+
+                this.deactiveButtons(element);
+                this.changeClass(element.getAttribute('data-likes'));
+            },
+
+            deactiveButtons: function (element) {
+                var elements = Polymer.dom(this.root).querySelectorAll('paper-fab');
+
+                elements.forEach(function (_element) {
+                    if (_element === element) {
+                        _element.classList.remove('grey');
+                    }
+
+                    else {
+                        _element.classList.add('grey');
+                    }
+                });
+            },
+
+            changeClass: function (element) {
+                var elegido = Polymer.dom(this.root).querySelector('.' + element);
+                var todos = Polymer.dom(this.root).querySelectorAll('.movedownup');
+
+                todos.forEach(function (_element) {
+                    _element.classList.remove('movedown');
+                });
+
+                elegido.classList.add('movedown');
+            }
+        });
+    </script>
+</dom-module>

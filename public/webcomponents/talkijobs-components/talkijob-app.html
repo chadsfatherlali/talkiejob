@@ -1,0 +1,234 @@
+<link rel='import' href='/bower_components/paper-input/paper-textarea.html'/>
+<link rel='import' href='/bower_components/paper-fab/paper-fab.html'/>
+<link rel='import' href='/webcomponents/main-components/tk-card.html'>
+<link rel='import' href='/webcomponents/main-components/tk-evaluatinbtn.html'>
+<!--MATERIAL-->
+
+<link rel='import' href='/bower_components/iron-flex-layout/iron-flex-layout.html'>
+<link rel='import' href='/bower_components/paper-dialog/paper-dialog.html'/>
+<link rel='import' href='/bower_components/paper-input/paper-input.html'/>
+<link rel='import' href='/bower_components/paper-button/paper-button.html'/>
+<link rel='import' href='/bower_components/iron-grid/iron-grid.html'/>
+<link rel='import' href='/bower_components/paper-toggle-button/paper-toggle-button.html'/>
+
+<dom-module id="talkijob-app">
+    <template>
+        <style>
+            :host {
+                display: block;
+                --paper-input-container-focus-color: #1ea58a;
+                --paper-input-container-color:#fff;
+                --paper-input-container: padding-bottom: 0px;
+
+            }  
+
+            .job__rew {
+                height: 60px;
+                position: fixed;
+                right: 60px;
+                bottom: 50px;
+            }
+
+            .like--it {
+                background-color: #1ea58a;
+            }
+
+            .flex {
+                @apply(--layout-vertical);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .tk__back {
+                width: 100%;
+                height: 400px;
+                /*background-image: url("../img/job.jpg");*/
+                background-color: #008b8b;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .tk__back h2 {
+                text-align: center;
+                font-size: 4em;
+                color: #fff;
+            }
+
+            .tk__button {
+                width: 250px;
+                height: 60px;
+                background-color: rgba(232, 91, 101, 0.9);
+                color: #fff;
+                font-weight: bold;
+                font-family: 'Montserrat', sans-serif;
+                transition: background-color 0.3s linear;
+            }
+
+            .tk__button:hover {
+                background-color: rgba(232, 91, 101, 1);
+            }
+
+            .center {
+                text-align: center;
+            }
+
+
+            paper-dialog h5 {
+                font-family: 'Montserrat', sans-serif;
+                color: slategray;
+            }
+
+            paper-dialog {
+                width: 400px;
+                padding: 0 0px 0 0px;
+                font-family: 'Montserrat', sans-serif;
+                
+            }
+
+            paper-dialog header {
+                background-color: #1ea58a ;
+                margin: 0px;
+                padding: 15px 15px 30px 15px;
+            }
+
+            paper-textarea {
+                background-color: #f3f3f3;
+                padding: 0px 10px 0px 10px;
+            }
+
+            #empresa {
+                --paper-input-container-invalid-color : #fdf2cc;
+                --paper-input-container-label-floating: {
+                     font-family: 'Montserrat', sans-serif;
+                font-size: 20px;
+                 }
+                --paper-input-container-input-color : #fff;
+                --paper-input-container-input:{
+                     font-size: 23px;
+                     text-align: center;
+                     font-family: 'Montserrat', sans-serif;
+                 }
+            }
+          .padding {
+              padding: 10px 15px 0px 15px;
+          }
+            paper-toggle-button {
+                --paper-toggle-button-checked-bar-color:#26a68b;
+                --paper-toggle-button-checked-button-color:  #26a68b;
+                width: 268px;
+                margin: 0 auto;
+            }
+            paper-toggle-button i {
+                color: slategray;
+                font-style: normal;
+                font-family: 'Montserrat', sans-serif;
+            }
+        </style>
+
+
+        <div class="tk__back flex">
+            <h2>¿Qué tal fue tu último trabajo?</h2>
+            <paper-button class="tk__button" raised on-click="openModal">Valorar</paper-button>
+        </div>
+
+
+        <tk-card collection="{{collection}}"></tk-card>
+
+
+        <!--modal notlikeit-->
+        <paper-dialog id="job__form" with-backdrop collection="{{collection}}">
+            <header class="form__header">
+            <paper-input type="text" label="Nombre de la empresa" id="empresa" required auto-validate always-float-label error-message="Este campo es obligatorio"></paper-input>
+            </header>
+            <tk-evaluationbtn business="{{business}}"></tk-evaluationbtn>
+            <div class="padding">
+            <paper-textarea placeholder="Tu comentario" id="textarea" rows="4" maxlength="200"></paper-textarea>
+            </div>
+
+            <div class="center">
+                <paper-toggle-button id="togglebtn" checked on-tap="changetxt"><i>[[name]]</i></paper-toggle-button>
+            </div>
+
+            <div class="center">
+                <paper-button class="tk__button" raised  on-tap="addSnippet">Publicar</paper-button>
+            </div>
+        </paper-dialog>
+
+
+        <!-- floating Like IT button -->
+        <paper-fab class="job__rew"
+                   icon='add'
+                   on-click='openModal'>
+        </paper-fab>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'talkijob-app',
+
+            properties: {
+                collection: {
+                    type: Array,
+                    value: function () {
+                        return [];
+                    }
+                },
+
+                business: {
+                    type: Object,
+                    value: {
+                        name: String,
+                        comment: String,
+                        qualification: String,
+                        usershow: Boolean
+                    }
+                },
+
+                name: {
+                    type: String,
+                    value: "Mostrar mi nombre"
+                }
+            },
+
+            observers: [
+                "_collectionChanged(collection.*)"
+            ],
+
+            addSnippet: function () {
+                this.business.name = this.$.empresa.value;
+                this.business.comment = this.$.textarea.value;
+
+                if (this.$.togglebtn.checked) {
+                    this.business.usershow = "Jon Snow";
+                }
+
+                else {
+                    this.business.usershow = "Anónimo";
+                }
+
+                this.push("collection", this.business);
+
+            },
+
+
+            _collectionChanged: function () {
+                this.$.job__form.close();
+            },
+
+            openModal: function () {
+                this.$.job__form.open();
+            },
+
+            changetxt: function () {
+                if (this.$.togglebtn.checked) {
+                   this.name = "Mostrar mi nombre"
+                }
+
+                else {
+                    this.name = "Publicar como anónimo"
+                }
+            }
+        });
+    </script>
+</dom-module>
