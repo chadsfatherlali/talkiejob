@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>talkijob</title>
+    <meta name="description" content="talkijob description">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="/src/talkijob-app/talkijob-app.html">
+    <link rel="import" href="/src/talkijob-app/talkijob-user.html">
+    <link rel="import" href="/src/talkijob-app/talkijob-header.html">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+      body {
+        background-color: #e9ebee;
+        font-family: 'Montserrat', sans-serif;
+        color: slategray;
+      }
+    </style>
+  </head>
+  <body>
+  <header>
+    <talkijob-header></talkijob-header>
+  </header>
+    <talkijob-user></talkijob-user>
+  </body>
+</html>
