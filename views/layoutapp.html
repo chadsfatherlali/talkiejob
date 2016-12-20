@@ -8,7 +8,6 @@
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
 	<link rel="import" href="bower_components/polymer/polymer.html">
- 	<link rel="import" href="webcomponents/talkijobs-components/talkijob-app.html">
     <link rel="import" href="webcomponents/talkijobs-components/talkijob-header.html">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -17,6 +16,9 @@
 </head>
 
 <body>
+<header>
+	<talkijob-header></talkijob-header>
+</header>
 	{% block content %}
 	{% endblock %}
 </body>

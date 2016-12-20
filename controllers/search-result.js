@@ -4,9 +4,10 @@ const views = require('co-views');
 const parse = require('co-body');
 
 const render = views(__dirname + '/../views', {
-  map: { html: 'swig' }
+    map: { html: 'swig' }
 });
 
-module.exports.home = function *home (ctx) {
-  this.body = yield render('home', {});
+module.exports.searchresult = function *home (ctx) {
+    this.body = yield render('search-result', {});
 };
+

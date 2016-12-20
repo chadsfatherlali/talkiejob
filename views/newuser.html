@@ -1,32 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+{% extends 'layoutapp.html' %}
 
-    <title>talkijob</title>
-    <meta name="description" content="talkijob newuser">
+{% block components %}
+<link rel="import" href="/webcomponents/talkijobs-components/talkijob-adduser.html">
+{% endblock %}
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
-
-    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-
-    <link rel="import" href="/src/talkijob-app/talkijob-adduser.html">
-    <link rel="import" href="/src/talkijob-app/talkijob-header.html">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <style>
-      body {
-        background-color: #e9ebee;
-        font-family: 'Montserrat', sans-serif;
-        color: slategray;
-      }
-    </style>
-  </head>
-  <body>
-  <header>
-    <talkijob-header></talkijob-header>
-  </header>
-    <talkijob-adduser></talkijob-adduser>
-  </body>
-</html>
+{% block content %}
+<talkijob-adduser></talkijob-adduser>
+{% endblock %}
