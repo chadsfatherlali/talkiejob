@@ -5,6 +5,7 @@ const home = require('./controllers/home');
 const newuser = require('./controllers/newuser');
 const searchresult = require('./controllers/search-result');
 const user = require('./controllers/user');
+const error = require('./controllers/error');
 const compress = require('koa-compress');
 const logger = require('koa-logger');
 const serve = require('koa-static');
@@ -27,6 +28,7 @@ app.use(route.get('/', home.home));
 app.use(route.get('/newuser', newuser.newuser));
 app.use(route.get('/search-result', searchresult.searchresult));
 app.use(route.get('/user', user.user));
+app.use(route.get('/error', error.error));
 
 // Serve static files
 app.use(serve(path.join(__dirname, 'public')));
