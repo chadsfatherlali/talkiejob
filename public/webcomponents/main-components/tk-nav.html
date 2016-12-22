@@ -18,6 +18,11 @@
         font-size: 20px;
          }
       --paper-input-container-focus-color: #1ea58a;
+        --paper-input-container-input: {
+          width: inherit;
+          text-align: left;
+         padding: 15px 0 15px 45px;
+        }
 
       }
       iron-icon {
@@ -83,7 +88,7 @@
       form .grey {
         position: absolute;
         left: 0px;
-        top: 28px;
+        top: 45px;
         color: #757575;
       }
 
@@ -120,10 +125,10 @@
       <div class="tk__module flex-wrap">
         <a class="close__btn" href="#"><iron-icon icon="clear" on-tap="closeSearch"></iron-icon></a>
        <div class="imagen"> <img src="/../../img/search.png"></div>
-        <h2>What firm are you looking for?</h2>
+        <h2>¿Qué empresa estás buscando?</h2>
         <form>
           <iron-icon class="grey" icon="search"></iron-icon>
-      <paper-input class="search__input" type="text" placeholder="Search" id="search"></paper-input>
+      <paper-input class="search__input" type="text" placeholder="Buscar" id="search"></paper-input>
         </form>
       </div>
     </paper-dialog>
