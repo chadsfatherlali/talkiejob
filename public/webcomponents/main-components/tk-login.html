@@ -65,7 +65,7 @@
         height: 20px;
       }
       paper-dialog {
-        min-width: 400px;
+        max-width: 400px;
         padding: 0 20px 0 20px;
         font-family: 'Montserrat', sans-serif;
       }
@@ -81,28 +81,11 @@
       h5 {
         padding-top: 15px;
         margin: 0px;
+        text-align: center;
       }
 
       h5 a {
-        text-decoration: none;
-        font-size: 16px;
-        color: #757575;
-      font-family: 'Montserrat', sans-serif;
-      }
-      h5 a:hover {
-     text-decoration: underline;
-      }
-      h5 .regi {
-        color: #fff;
-        background-color: rgba(38, 166, 139, 0.7);
-        padding: 5px 15px;
-        border-radius: 3px;
-        transition: background-color 0.3s linear;
-      }
-
-      h5 .regi:hover {
-        text-decoration: none;
-        background-color: rgba(38, 166, 139, 1);
+       color: #3c3f41;
       }
 
       small {
@@ -110,13 +93,70 @@
         text-align: center;
         font-family: 'Montserrat', sans-serif;
       }
-      facebook-login {
-       margin-bottom: 10px;
+      facebook-login::shadow span {
+      width: 100%!important;
       }
+
+      facebook-login::shadow iframe {
+        width: initial!important;
+      }
+
+      facebook-login::shadow #u_0_1 {
+        width:100%
+      }
+
+
 
       google-signin {
         margin: 0px;
       }
+
+
+      .tk__button {
+        width: 100%;
+        background-color: rgba(232, 91, 101, 0.9);
+        border: 1px solid rgba(232, 91, 101, 1);
+        margin: 0px;
+        color: #fff;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        transition: background-color 0.3s linear;
+
+      }
+
+      .tk__button:hover {
+        background-color: rgba(232, 91, 101, 1);
+      }
+
+      .buttons a {
+        text-decoration: none;
+        display: block;
+        height: 50px;
+        width: 50%;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0px;
+      }
+
+      .tk__regi {
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid rgba(232, 91, 101, 1);
+        background-color: transparent;
+        color: #ea6b73;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        transition: background-color 0.3s linear;
+      }
+
+      .tk__regi:hover {
+        background-color: #f7f4f4;
+      }
+
 
     </style>
     <nav>
@@ -135,7 +175,10 @@
         <paper-input type="email" placeholder="Email" id="email"></paper-input>
         <paper-input type="password" placeholder="Password" id="pass"></paper-input>
         </div>
-        <h5><a class="regi" href="../../newuser">Regístrate</a></h5>
+        <div class="buttons">
+          <a href="/"> <paper-button class="tk__button" raised >Login</paper-button></a>
+          <a href="/newuser"> <paper-button class="tk__regi" raised ">Regístrate</paper-button></a>
+        </div>
         <h5><a href="#"> ¿Se te ha olvidado la contraseña?</a></h5>
 
       </div>
