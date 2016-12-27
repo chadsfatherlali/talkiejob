@@ -7,7 +7,10 @@
 <link rel='import' href='../../bower_components/paper-input/paper-input.html'/>
 <link rel='import' href='../../bower_components/paper-button/paper-button.html'/>
 <link rel="import" href="../../bower_components/fontawesome-iconset/fa-all.html">
-
+<link rel="import" href="../../bower_components/facebook-login/dist/facebook-login.html">
+<link rel="import" href="../../bower_components/google-apis/google-apis.html">
+<link rel="import" href="../../bower_components/iron-jsonp-library/iron-jsonp-library.html">
+<link rel="import" href="../../bower_components/google-signin/google-signin.html">
 <dom-module id="tk-login">
   <template>
     <style>
@@ -107,6 +110,13 @@
         text-align: center;
         font-family: 'Montserrat', sans-serif;
       }
+      facebook-login {
+       margin-bottom: 10px;
+      }
+
+      google-signin {
+        margin: 0px;
+      }
 
     </style>
     <nav>
@@ -117,8 +127,10 @@
     <!--modal notlikeit-->
     <paper-dialog class="loginModule" id="loginModal" with-backdrop>
       <div class="tk__module flex-wrap">
-        <paper-button class="tk__facebook" raised> <iron-icon class="facebook__icon" icon="fa:facebook"></iron-icon> Log in</paper-button>
-        <small>(No publicaremos nada sin su consentimiento)</small>
+        <facebook-login
+                appID="1380222282009984"></facebook-login>
+        <google-signin client-id="57184330935-uudjb0cn95bua7342bif3jbcoh75kv5r.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
+        <small>(No publicaremos nada sin su consentimiento y <br>podra publicar en todo el momento como anónimo)</small>
         <div class="separate">
         <paper-input type="email" placeholder="Email" id="email"></paper-input>
         <paper-input type="password" placeholder="Password" id="pass"></paper-input>
