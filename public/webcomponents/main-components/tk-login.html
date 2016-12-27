@@ -51,35 +51,23 @@
         height: 34px;
         padding-right: 7px;
       }
-      .tk__facebook {
-        background-color:rgba(80, 101, 164, 0.9);
-        color: #fff;
-        font-weight: bold;
-        transition: background-color 0.3s linear;
-      }
-      .tk__facebook:hover {
-        background-color:rgba(80, 101, 164, 1);
-      }
-      .facebook__icon {
-        width: 20px;
-        height: 20px;
-      }
       paper-dialog {
-        max-width: 400px;
-        padding: 0 20px 0 20px;
+        width: 400px;
+        padding: 0px;
         font-family: 'Montserrat', sans-serif;
+        border-radius: 4px;
       }
       paper-button {
         text-transform: inherit;
       }
 
       .separate {
-        margin: 15px 0 15px 0;
-        border-top: 1px solid #ddd;
+        margin-top: 0px;
+        padding: 20px;
       }
 
       h5 {
-        padding-top: 15px;
+        padding-bottom: 15px;
         margin: 0px;
         text-align: center;
       }
@@ -93,16 +81,9 @@
         text-align: center;
         font-family: 'Montserrat', sans-serif;
       }
-      facebook-login::shadow span {
-      width: 100%!important;
-      }
-
-      facebook-login::shadow iframe {
-        width: initial!important;
-      }
-
-      facebook-login::shadow #u_0_1 {
-        width:100%
+      facebook-login{
+        margin-bottom: 10px;
+        background-color: #4862a3;
       }
 
 
@@ -114,6 +95,7 @@
 
       .tk__button {
         width: 100%;
+        height: 60px;
         background-color: rgba(232, 91, 101, 0.9);
         border: 1px solid rgba(232, 91, 101, 1);
         margin: 0px;
@@ -131,19 +113,21 @@
       .buttons a {
         text-decoration: none;
         display: block;
-        height: 50px;
-        width: 50%;
+        height: 60px;
+        width: 100%;
       }
 
       .buttons {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0px;
+        flex-direction: column;
+        padding: 20px;
       }
 
       .tk__regi {
+        margin: 0px;
+        margin-top: 10px;
         width: 100%;
+        height: 60px;
         box-sizing: border-box;
         border: 1px solid rgba(232, 91, 101, 1);
         background-color: transparent;
@@ -157,6 +141,27 @@
         background-color: #f7f4f4;
       }
 
+      header {
+        border-bottom: 1px solid #ddd;
+        margin-top: 0px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tk__facebook {
+        background-color: #4862a3;
+        color: #fff;
+        height: 34px;
+        margin: 0px;
+        margin-bottom: 10px;
+      }
+
+      .tk__facebook iron-icon {
+       width: 24px;
+        height: 24px;
+      }
+
 
     </style>
     <nav>
@@ -166,22 +171,22 @@
 
     <!--modal notlikeit-->
     <paper-dialog class="loginModule" id="loginModal" with-backdrop>
-      <div class="tk__module flex-wrap">
-        <facebook-login
-                appID="1380222282009984"></facebook-login>
+
+        <header>
+        <paper-button class="tk__facebook"> <iron-icon class="facebook__icon" icon="fa:facebook"></iron-icon> Sign in</paper-button>
         <google-signin client-id="57184330935-uudjb0cn95bua7342bif3jbcoh75kv5r.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
-        <small>(No publicaremos nada sin su consentimiento y <br>podra publicar en todo el momento como anónimo)</small>
+        <small>(No publicaremos nada sin su consentimiento y podra pùblicar como anonimo en todo el momento)</small>
+        </header>
         <div class="separate">
         <paper-input type="email" placeholder="Email" id="email"></paper-input>
         <paper-input type="password" placeholder="Password" id="pass"></paper-input>
         </div>
         <div class="buttons">
-          <a href="/"> <paper-button class="tk__button" raised >Login</paper-button></a>
-          <a href="/newuser"> <paper-button class="tk__regi" raised ">Regístrate</paper-button></a>
+          <a href="/"> <paper-button class="tk__button" >Login</paper-button></a>
+          <a href="/newuser"> <paper-button class="tk__regi" ">Regístrate</paper-button></a>
         </div>
         <h5><a href="#"> ¿Se te ha olvidado la contraseña?</a></h5>
 
-      </div>
     </paper-dialog>
   </template>
 
