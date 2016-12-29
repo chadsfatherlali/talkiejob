@@ -99,7 +99,7 @@
                 <paper-input class="pass" type="text" label="Nombre" id="name" name="name" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input class="pass" type="text" label="Apellido" id="surname" name="surname" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="email" label="Email" id="email" name="email" required error-message="Este campo es obligatorio"></paper-input>
-                <paper-input type="password" label="Contraseña" id="pass" name="pass" required error-message="Este campo es obligatorio"></paper-input>
+                <paper-input type="password" label="Contraseña" id="password" name="password" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Repite la contraseña" name="passre" id="passre" required error-message="No coincide"></paper-input>
                 <div class="center"><paper-button class="tk__button" on-tap="sendInfo" raised>Enviar</paper-button></div>
             </form>
@@ -116,20 +116,30 @@
             </div>
         </paper-dialog>
         
-        <iron-request id="xhr"></iron-request>
+        <iron-ajax id="xhr"
+          url="http://localhost:3000/api/users"
+          content-type="application/json"
+          method="POST"
+          handle-as="json"
+          params={{datos}}></ajax>
     </template>
 
     <script>
         Polymer({
             is: 'talkijob-adduser',
             
+            properties: {
+              datos: {
+                name: String,
+                surname: String,
+                password: String,
+                email: String
+              }
+            },
+            
             sendInfo: function () {
-              var datos = this.$.userRegistration.serialize();
-              
-              this.$.xhr.send({
-                url: 'http://www.google.com/',
-                body: datos
-              });
+              this.datos = this.$.userRegistration.serialize();
+              this.$.xhr.generateRequest();
             }
         });
     </script>

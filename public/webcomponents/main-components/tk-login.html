@@ -244,6 +244,8 @@
       handleGplusResponse: function (response) {
         var user = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
         
+        console.log('G+', user.getId());
+        
         this.loginAgainstLB(user.getEmail(), 'G+');
       },
       
@@ -251,7 +253,9 @@
         var _self = this;
         
         if (response.authResponse) {
-          FB.api('/me?fields=email', function (response) {
+          FB.api('/me?fields=email,name', function (response) {
+            console.log('FB', response.id);
+            
             _self.loginAgainstLB(response.email, 'FB');
           });
         }
@@ -265,7 +269,7 @@
         }
       },
       
-      loginAgainstLB(email, type) {
+      loginAgainstLB: function (email, type) {
         console.log(email);
         console.log(type);
       }
