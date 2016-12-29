@@ -95,41 +95,42 @@
         <div class="container">
             <h2>Registrate en takiejob</h2>
 
-            <form is="iron-form" id="from">
-                <paper-input class="pass" type="text" label="Nombre" id="name" required error-message="Este campo es obligatorio"></paper-input>
-                <paper-input class="pass" type="text" label="Apellido" id="surname" required error-message="Este campo es obligatorio"></paper-input>
-                <paper-input type="email" label="Email" id="email" required error-message="Este campo es obligatorio"></paper-input>
-                <paper-input type="password" label="Contraseña" id="pass" required error-message="Este campo es obligatorio"></paper-input>
-                <paper-input type="password" label="Repite la contraseña" id="passre" required error-message="No coincide"></paper-input>
-               <div class="center"> <paper-button class="tk__button" raised id="regi">Enviar</paper-button></div>
+            <form is="iron-form" id="userRegistration">
+                <paper-input class="pass" type="text" label="Nombre" id="name" name="name" required error-message="Este campo es obligatorio"></paper-input>
+                <paper-input class="pass" type="text" label="Apellido" id="surname" name="surname" required error-message="Este campo es obligatorio"></paper-input>
+                <paper-input type="email" label="Email" id="email" name="email" required error-message="Este campo es obligatorio"></paper-input>
+                <paper-input type="password" label="Contraseña" id="pass" name="pass" required error-message="Este campo es obligatorio"></paper-input>
+                <paper-input type="password" label="Repite la contraseña" name="passre" id="passre" required error-message="No coincide"></paper-input>
+                <div class="center"><paper-button class="tk__button" on-tap="sendInfo" raised>Enviar</paper-button></div>
             </form>
-
         </div>
 
         <!--thanks modal-->
         <paper-dialog class="thanksmodal" id="thanksmodal" with-backdrop>
             <div class="padding">
-<h2>Muchas gracias!</h2>
-            <h3>Solo le queda un paso más, le hemos enviado un correo con un enlace que tiene que verificar con un click </h3>
-                <div class="center">
-                   <a href="../../index.html"> <paper-button class="tk__button" raised >Volver a la portada</paper-button></a>
-                </div>
+              <h2>Muchas gracias!</h2>
+              <h3>Solo le queda un paso más, le hemos enviado un correo con un enlace que tiene que verificar con un click </h3>
+              <div class="center">
+                <a href="../../index.html"> <paper-button class="tk__button" raised >Volver a la portada</paper-button></a>
+              </div>
             </div>
         </paper-dialog>
+        
+        <iron-request id="xhr"></iron-request>
     </template>
 
     <script>
         Polymer({
             is: 'talkijob-adduser',
-            ready: function(){
-           this.$.regi.addEventListener('click',() => {
-
-               this.$.from.submit()
-           })
+            
+            sendInfo: function () {
+              var datos = this.$.userRegistration.serialize();
+              
+              this.$.xhr.send({
+                url: 'http://www.google.com/',
+                body: datos
+              });
             }
-
         });
-
-
     </script>
 </dom-module>
