@@ -101,7 +101,7 @@
                 <paper-input type="email" label="Email" id="email" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Contraseña" id="pass" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Repite la contraseña" id="passre" required error-message="No coincide"></paper-input>
-               <div class="center"> <paper-button class="tk__button" raised on-tap="openModal" id="regi" >Enviar</paper-button></div>
+               <div class="center"> <paper-button class="tk__button" raised id="regi">Enviar</paper-button></div>
             </form>
 
         </div>
@@ -122,9 +122,9 @@
         Polymer({
             is: 'talkijob-adduser',
             ready: function(){
-           this.$.regi.addEventListener('click',()=>{
+           this.$.regi.addEventListener('click',() => {
 
-               this.$fomr.submit()
+               this.$.from.submit()
            })
             }
 
