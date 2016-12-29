@@ -8,5 +8,10 @@ const render = views(__dirname + '/../views', {
 });
 
 module.exports.home = function *home (ctx) {
+  this.cookies.set('cookie', 'lala', {
+  	signed: true,
+  	httpOnly: true
+  });
+  
   this.body = yield render('home', {});
 };

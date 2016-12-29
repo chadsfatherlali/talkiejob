@@ -174,32 +174,101 @@
     <paper-dialog class="loginModule" id="loginModal" with-backdrop>
 
         <header>
-        <paper-button class="tk__facebook"> <iron-icon class="facebook__icon" icon="fa:facebook"></iron-icon> Sign in</paper-button>
-        <google-signin client-id="57184330935-uudjb0cn95bua7342bif3jbcoh75kv5r.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/drive"></google-signin>
-        <small>(No publicaremos nada sin su consentimiento y podra pùblicar como anonimo en todo el momento)</small>
+          <paper-button class="tk__facebook" on-tap="facebookLogin"> <iron-icon class="facebook__icon" icon="fa:facebook"></iron-icon> Sign in</paper-button>
+          <google-signin
+            client-id="350348329514-n6mbk8hubjoe95q4ea7ff37ebijkn536.apps.googleusercontent.com"
+            scopes="email profile"
+            on-google-signin-aware-success="handleGplusResponse"></google-signin>
+          <small>(No publicaremos nada sin su consentimiento y podra pùblicar como anonimo en todo el momento)</small>
         </header>
+        
         <div class="separate">
-        <paper-input type="email" placeholder="Email" id="email"></paper-input>
-        <paper-input type="password" placeholder="Password" id="pass"></paper-input>
+          <paper-input type="email" placeholder="Email" id="email"></paper-input>
+          <paper-input type="password" placeholder="Password" id="pass"></paper-input>
         </div>
+
         <div class="buttons">
           <a href="/"> <paper-button class="tk__button" >Login</paper-button></a>
           <a href="/newuser"> <paper-button class="tk__regi" ">Regístrate</paper-button></a>
         </div>
+        
         <h5><a href="#"> ¿Se te ha olvidado la contraseña?</a></h5>
 
     </paper-dialog>
   </template>
 
-  <script>
+  <script>  
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '1040560606052569',
+        xfbml: true,
+        version: 'v2.8'
+      });
+      
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
     Polymer({
-
       is: 'tk-login',
-
-      openLoginModal: function(){
+      
+      openLoginModal: function () {
         this.$.loginModal.open();
-      }
+      },
+      
+      facebookLogin: function () {
+        var _self = this;
+        
+        FB.getLoginStatus(function (response) {
+          
+          if (response.status === 'connected') {
+            _self.handleFBresponse(response);
+          }
 
+          else {
+            FB.login(_self.handleFBresponse, {
+                scope: 'public_profile,email'
+              }
+            );
+          }
+        });
+      },
+      
+      handleGplusResponse: function (response) {
+        var user = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+        
+        this.loginAgainstLB(user.getEmail(), 'G+');
+      },
+      
+      handleFBresponse: function (response) {
+        var _self = this;
+        
+        if (response.authResponse) {
+          FB.api('/me?fields=email', function (response) {
+            _self.loginAgainstLB(response.email, 'FB');
+          });
+        }
+        
+        else {
+          try {
+            console.log('Login cancelled');
+          }
+          
+          catch (e) {}
+        }
+      },
+      
+      loginAgainstLB(email, type) {
+        console.log(email);
+        console.log(type);
+      }
     });
   </script>
 </dom-module>

@@ -12,7 +12,12 @@ const serve = require('koa-static');
 const route = require('koa-route');
 const koa = require('koa');
 const path = require('path');
+const KeyGrip = require('keygrip');
 const app = module.exports = koa();
+
+
+// Cookies
+app.keys = new KeyGrip(['secret 1', 'secret 2'], 'sha256');
 
 // Logger
 app.use(logger());
@@ -37,6 +42,8 @@ app.use(serve(path.join(__dirname, 'public')));
 app.use(compress());
 
 if (!module.parent) {
-  app.listen((process.env.PORT || 5000));
-  //console.log('listening on port 3000');
+	const port = (process.env.PORT || 5000);
+
+	app.listen(port);
+	console.log('listening on port: ' + port);
 }
