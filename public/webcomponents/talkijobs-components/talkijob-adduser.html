@@ -109,7 +109,7 @@
                 <paper-input type="email" label="Email" id="email" name="email" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Contraseña" id="password" name="password" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Repite la contraseña" name="passre" id="passre" required error-message="No coincide"></paper-input>
-                <p id="errors" class="errors"></p>
+                <p id="errors" class="errors">{{msgError}}</p>
                 <div class="center"><paper-button class="tk__button" on-tap="sendInfo" raised>Enviar</paper-button></div>
             </form>
         </div>
@@ -135,14 +135,22 @@
     <script>
         Polymer({
             is: 'talkijob-adduser',
+
+            properties: {
+                msgError: {
+                    type: String,
+                    default: ''
+                }
+            },
             
             sendInfo: function () {
                 if (this.$.password.value != this.$.passre.value){
-                    this.$.errors.append("La contraseña no coincide")
+                    this.msgError = 'La contraseña no coincide';
 
                     return false;
                 }
 
+                this.msgError = '';
                 this.$.xhr.body = this.$.userRegistration.serialize();
                 this.$.xhr.generateRequest();
             }
