@@ -129,35 +129,22 @@
           url="http://localhost:3000/api/users"
           content-type="application/json"
           method="POST"
-          handle-as="json"
-          params={{datos}}></ajax>
+          handle-as="json"></ajax>
     </template>
 
     <script>
         Polymer({
             is: 'talkijob-adduser',
             
-            properties: {
-              datos: {
-                name: String,
-                surname: String,
-                password: String,
-                email: String
-              }
-            },
-            
             sendInfo: function () {
-
-                if (this.$.password.value != this.$.passre.value ){
-
+                if (this.$.password.value != this.$.passre.value){
                     this.$.errors.append("La contraseña no coincide")
-                }
-                else {
-                    this.$.errors.remove();
-                   this.datos = this.$.userRegistration.serialize();
-                    this.$.xhr.generateRequest();
+
+                    return false;
                 }
 
+                this.$.xhr.body = this.$.userRegistration.serialize();
+                this.$.xhr.generateRequest();
             }
         });
     </script>

@@ -31,8 +31,8 @@
       <file leaf-file-name="talkijob-adduser.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/webcomponents/talkijobs-components/talkijob-adduser.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
+            <state relative-caret-position="344">
+              <caret line="116" column="27" lean-forward="true" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -315,7 +315,7 @@
       <workItem from="1482963640546" duration="1429000" />
       <workItem from="1483000037703" duration="227000" />
       <workItem from="1483087124166" duration="7000" />
-      <workItem from="1483098650692" duration="1156000" />
+      <workItem from="1483098650692" duration="1387000" />
     </task>
     <task id="LOCAL-00001" summary="added new components">
       <created>1482232198616</created>
@@ -433,7 +433,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42853000" />
+    <option name="totallyTimeSpent" value="43084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="22" width="1920" height="1058" extended-state="6" />
@@ -830,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/webcomponents/talkijobs-components/talkijob-adduser.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="141" column="17" lean-forward="false" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
+        <state relative-caret-position="344">
+          <caret line="116" column="27" lean-forward="true" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="27" />
           <folding />
         </state>
       </provider>
