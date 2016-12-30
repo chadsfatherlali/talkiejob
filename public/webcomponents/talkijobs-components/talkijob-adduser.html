@@ -89,6 +89,14 @@
                 text-decoration: none;
             }
 
+            .errors {
+                color: #ea6b74;
+                font-size: 1.2em;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
 
         </style>
 
@@ -101,6 +109,7 @@
                 <paper-input type="email" label="Email" id="email" name="email" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Contraseña" id="password" name="password" required error-message="Este campo es obligatorio"></paper-input>
                 <paper-input type="password" label="Repite la contraseña" name="passre" id="passre" required error-message="No coincide"></paper-input>
+                <p id="errors" class="errors"></p>
                 <div class="center"><paper-button class="tk__button" on-tap="sendInfo" raised>Enviar</paper-button></div>
             </form>
         </div>
@@ -138,8 +147,17 @@
             },
             
             sendInfo: function () {
-              this.datos = this.$.userRegistration.serialize();
-              this.$.xhr.generateRequest();
+
+                if (this.$.password.value != this.$.passre.value ){
+
+                    this.$.errors.append("La contraseña no coincide")
+                }
+                else {
+                    this.$.errors.remove();
+                   this.datos = this.$.userRegistration.serialize();
+                    this.$.xhr.generateRequest();
+                }
+
             }
         });
     </script>
