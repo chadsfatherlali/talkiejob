@@ -120,25 +120,15 @@
           url="http://localhost:3000/api/users"
           content-type="application/json"
           method="POST"
-          handle-as="json"
-          params={{datos}}></ajax>
+          handle-as="json"></ajax>
     </template>
 
     <script>
         Polymer({
             is: 'talkijob-adduser',
             
-            properties: {
-              datos: {
-                name: String,
-                surname: String,
-                password: String,
-                email: String
-              }
-            },
-            
             sendInfo: function () {
-              this.datos = this.$.userRegistration.serialize();
+              this.$.xhr.body = this.$.userRegistration.serialize();
               this.$.xhr.generateRequest();
             }
         });
