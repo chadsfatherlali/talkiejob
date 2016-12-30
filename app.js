@@ -3,6 +3,7 @@
 const messages = require('./controllers/messages');
 const home = require('./controllers/home');
 const newuser = require('./controllers/newuser');
+const newpass = require('./controllers/newpass');
 const searchresult = require('./controllers/search-result');
 const user = require('./controllers/user');
 const error = require('./controllers/error');
@@ -31,6 +32,7 @@ app.use(route.get('/promise', messages.promise));*/
 
 app.use(route.get('/', home.home));
 app.use(route.get('/newuser', newuser.newuser));
+app.use(route.get('/newpass', newpass.newpass));
 app.use(route.get('/search-result', searchresult.searchresult));
 app.use(route.get('/user', user.user));
 app.use(route.get('/error', error.error));
