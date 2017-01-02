@@ -96,12 +96,13 @@
         </style>
 
         <div class="evaluation__buttons flex">
-            <paper-fab class="thumb-up desactivebtn" icon='thumb-up' on-tap="clickbtns" data-value="thumb-up" data-likes="likeit" ></paper-fab>
-            <paper-fab class="thumbs-up-down desactivebtn" icon='thumbs-up-down' on-tap="clickbtns" data-value="thumbs-up-down" data-likes="wasok"></paper-fab>
-            <paper-fab class="thumb-down desactivebtn" icon='thumb-down' on-tap="clickbtns" data-value="thumb-down" data-likes="dontlike"></paper-fab>
+            <paper-fab id="thumbUp" class="thumb-up desactivebtn" icon='thumb-up' on-tap="clickbtns" data-value="thumb-up" data-likes="likeit" toggles></paper-fab>
+            <paper-fab id="thumbUpDown" class="thumbs-up-down desactivebtn" icon='thumbs-up-down' on-tap="clickbtns" data-value="thumbs-up-down" data-likes="wasok" toggles></paper-fab>
+            <paper-fab id="thumbDown" class="thumb-down desactivebtn" icon='thumb-down' on-tap="clickbtns" data-value="thumb-down" data-likes="dontlike" toggles></paper-fab>
         </div>
-
+        
         <div class="evaluation__buttons_def flex">
+        
         <small class="likeit movedownup">me gusta</small>
         <small class="wasok movedownup">más o menos</small>
         <small class="dontlike movedownup">No me gusta</small>
@@ -113,39 +114,47 @@
         Polymer({
             is: 'tk-evaluationbtn',
             
-            properties: {},
-
             clickbtns: function (e) {
-                var element = Polymer.dom(e).localTarget;
-                this.business.qualification = element.getAttribute('data-value');
-
-                this.deactiveButtons(element);
-                this.changeClass(element.getAttribute('data-likes'));
+              var _self = this,
+                  elements = Polymer.dom(this.root).querySelectorAll('paper-fab');
+              
+              elements.forEach(function (_element) {                
+                if (
+                    _element.active
+                    && _element.focused
+                ) {
+                  _element.classList.remove('grey');
+                  
+                  _self.addText(_element.getAttribute('data-likes'), true);
+                }
+                
+                else {
+                  _element.classList.add('grey');
+                  _element.classList.remove('movedown');
+                  
+                  _self.addText(_element.getAttribute('data-likes'), false);
+                }
+                
+                if (_element.active) {
+                  _self.business.qualification = _element.getAttribute('data-value');
+                  
+                  return false;
+                }
+                
+                _self.business.qualification = '';
+              });
             },
 
-            deactiveButtons: function (element) {
-                var elements = Polymer.dom(this.root).querySelectorAll('paper-fab');
-
-                elements.forEach(function (_element) {
-                    if (_element === element) {
-                        _element.classList.remove('grey');
-                    }
-
-                    else {
-                        _element.classList.add('grey');
-                    }
-                });
-            },
-
-            changeClass: function (element) {
-                var elegido = Polymer.dom(this.root).querySelector('.' + element);
-                var todos = Polymer.dom(this.root).querySelectorAll('.movedownup');
-
-                todos.forEach(function (_element) {
-                    _element.classList.remove('movedown');
-                });
-
-                elegido.classList.add('movedown');
+            addText: function (elementClass, show) {
+              var selected = Polymer.dom(this.root).querySelector('.' + elementClass);
+              
+              if (show) {
+                selected.classList.add('movedown');
+              }
+              
+              else {
+                selected.classList.remove('movedown');
+              }
             }
         });
     </script>
