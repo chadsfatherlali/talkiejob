@@ -3,6 +3,7 @@
 <link rel='import' href='../../bower_components/paper-fab/paper-fab.html'/>
 <link rel="import" href="../main-components/tk-card.html">
 <link rel="import" href="../main-components/tk-evaluatinbtn.html">
+<link rel='import' href='../../bower_components/iron-form/iron-form.html'/>
 <!--MATERIAL-->
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -138,6 +139,14 @@
                 background-color: #d16069;
                 background-color: rgba(232, 91, 101, 1);
             }
+            .errors {
+                color: #ea6b74;
+                font-size: 1.2em;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 5px 0px 5px 0px;
+            }
         </style>
 
 
@@ -153,7 +162,9 @@
         <!--modal notlikeit-->
         <paper-dialog id="job__form" with-backdrop collection="{{collection}}">
             <header class="form__header">
+                <form is="iron-form" id="jobReview">
             <paper-input type="text" label="Nombre de la empresa" id="empresa" required auto-validate autocapitalize error-message="Este campo es obligatorio"></paper-input>
+                </form>
             </header>
             <tk-evaluationbtn business="{{business}}"></tk-evaluationbtn>
             <div class="padding">
@@ -163,7 +174,7 @@
             <div class="center">
                 <paper-toggle-button id="togglebtn" checked on-tap="changetxt"><i>[[name]]</i></paper-toggle-button>
             </div>
-
+            <p id="errors" class="errors">{{msgError}}</p>
             <div class="center">
                 <paper-button class="tk__button" raised  on-tap="addSnippet">Publicar</paper-button>
             </div>
@@ -189,6 +200,13 @@
                     }
                 },
 
+                properties: {
+                    msgError: {
+                        type: String,
+                        default: ''
+                    }
+                },
+
                 business: {
                     type: Object,
                     value: {
@@ -210,6 +228,16 @@
             ],
 
             addSnippet: function () {
+
+
+                if (!this.$.jobReview.validate()) {
+                    this.msgError = 'El nombre de la empresa es importante';
+                    return false;
+                }
+                    if (this.business.qualification.length < 2){
+                        this.msgError = 'sd';
+                        return false;
+                   }
                 this.business.name = this.$.empresa.value;
                 this.business.comment = this.$.textarea.value;
 
