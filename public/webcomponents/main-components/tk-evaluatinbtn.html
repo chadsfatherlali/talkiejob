@@ -96,9 +96,9 @@
         </style>
 
         <div class="evaluation__buttons flex">
-            <paper-fab id="thumbUp" class="thumb-up desactivebtn" icon='thumb-up' on-tap="clickbtns" data-value="thumb-up" data-likes="likeit" toggles></paper-fab>
-            <paper-fab id="thumbUpDown" class="thumbs-up-down desactivebtn" icon='thumbs-up-down' on-tap="clickbtns" data-value="thumbs-up-down" data-likes="wasok" toggles></paper-fab>
-            <paper-fab id="thumbDown" class="thumb-down desactivebtn" icon='thumb-down' on-tap="clickbtns" data-value="thumb-down" data-likes="dontlike" toggles></paper-fab>
+          <paper-fab id="thumbUp" class="thumb-up desactivebtn" icon='thumb-up' on-tap="clickbtns" data-value="thumb-up" data-likes="likeit" toggles></paper-fab>
+          <paper-fab id="thumbUpDown" class="thumbs-up-down desactivebtn" icon='thumbs-up-down' on-tap="clickbtns" data-value="thumbs-up-down" data-likes="wasok" toggles></paper-fab>
+          <paper-fab id="thumbDown" class="thumb-down desactivebtn" icon='thumb-down' on-tap="clickbtns" data-value="thumb-down" data-likes="dontlike" toggles></paper-fab>
         </div>
         
         <div class="evaluation__buttons_def flex">
@@ -137,11 +137,7 @@
                 
                 if (_element.active) {
                   _self.business.qualification = _element.getAttribute('data-value');
-                  
-                  return false;
                 }
-                
-                _self.business.qualification = '';
               });
             },
 
