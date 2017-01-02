@@ -223,10 +223,6 @@
                 }
             },
 
-            observers: [
-                "_collectionChanged(collection.*)"
-            ],
-
             addSnippet: function () {
 
 
@@ -251,12 +247,12 @@
 
                 this.push("collection", this.business);
 
-            },
-
-
-            _collectionChanged: function () {
                 this.$.job__form.close();
+                this.$.empresa.value = null;
+                this.$.textarea.value = null;
+                this.business.qualification = null;
             },
+
 
             openModal: function () {
                 this.$.job__form.open();
