@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/fontawesome-iconset/fa-all.html">
+<link rel='import' href='../../bower_components/iron-form/iron-form.html'/>
 <!--MATERIAL-->
 <link rel='import' href='../../bower_components/paper-dialog/paper-dialog.html'/>
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -163,6 +164,16 @@
         height: 24px;
       }
 
+      .errors {
+          color: #ea6b74;
+          font-size: 1.2em;
+          display: block;
+          width: 80%;
+          margin: 0px auto;
+          text-align: center;
+          padding: 0px;
+      }
+
 
     </style>
     <nav>
@@ -182,14 +193,16 @@
           <small>(No publicaremos nada sin su consentimiento y podra pùblicar como anonimo en todo el momento)</small>
         </header>
         
-        <div class="separate">
-          <paper-input type="email" placeholder="Email" id="email"></paper-input>
-          <paper-input type="password" placeholder="Password" id="pass"></paper-input>
-        </div>
+        <form is="iron-form" class="separate" id="accesForm">
+          <paper-input type="email" placeholder="Email" required auto-validate id="email"></paper-input>
+          <paper-input type="password" placeholder="Password" required auto-validate id="pass"></paper-input>
+        </form>
+
+        <p id="errors" class="errors">{{msgError}}</p>
 
         <div class="buttons">
-          <a href="/"> <paper-button class="tk__button" >Login</paper-button></a>
-          <a href="/newuser"> <paper-button class="tk__regi" ">Regístrate</paper-button></a>
+         <paper-button class="tk__button" on-tap="accesPanel" >Login</paper-button>
+          <a href="/newuser"> <paper-button class="tk__regi">Regístrate</paper-button></a>
         </div>
         
         <h5><a href="/newpass"> ¿Se te ha olvidado la contraseña?</a></h5>
@@ -222,6 +235,13 @@
       openLoginModal: function () {
         this.$.loginModal.open();
       },
+
+        properties: {
+            msgError: {
+                type: String,
+                default: ''
+            }
+        },
       
       facebookLogin: function () {
         var _self = this;
@@ -272,7 +292,18 @@
       loginAgainstLB: function (email, type) {
         console.log(email);
         console.log(type);
-      }
+      },
+
+        accesPanel: function() {
+            if (!this.$.accesForm.validate()) {
+                this.msgError = 'Introduzca su email y contraseña para acceder ';
+                return false;
+            }
+        }
+
     });
+
+
+
   </script>
 </dom-module>
