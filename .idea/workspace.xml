@@ -28,8 +28,13 @@
       <file leaf-file-name="tk-evaluatinbtn.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/webcomponents/main-components/tk-evaluatinbtn.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="445">
+              <caret line="126" column="84" lean-forward="true" selection-start-line="126" selection-start-column="84" selection-end-line="126" selection-end-column="84" />
+=======
             <state relative-caret-position="370">
               <caret line="126" column="18" lean-forward="false" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
+>>>>>>> development
               <folding />
             </state>
           </provider>
@@ -361,8 +366,12 @@
       <workItem from="1483000037703" duration="227000" />
       <workItem from="1483087124166" duration="7000" />
       <workItem from="1483098650692" duration="4915000" />
+<<<<<<< HEAD
+      <workItem from="1483358004040" duration="10089000" />
+=======
       <workItem from="1483358004040" duration="9969000" />
       <workItem from="1483376430948" duration="6000" />
+>>>>>>> development
     </task>
     <task id="LOCAL-00001" summary="added new components">
       <created>1482232198616</created>
@@ -522,7 +531,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="56701000" />
+=======
     <option name="totallyTimeSpent" value="56587000" />
+>>>>>>> development
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="22" width="1920" height="994" extended-state="6" />
@@ -939,8 +952,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/webcomponents/main-components/tk-evaluatinbtn.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="445">
+          <caret line="126" column="84" lean-forward="true" selection-start-line="126" selection-start-column="84" selection-end-line="126" selection-end-column="84" />
+=======
         <state relative-caret-position="370">
           <caret line="126" column="18" lean-forward="false" selection-start-line="126" selection-start-column="18" selection-end-line="126" selection-end-column="18" />
+>>>>>>> development
           <folding />
         </state>
       </provider>
