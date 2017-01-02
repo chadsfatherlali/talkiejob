@@ -166,7 +166,7 @@
             <paper-input type="text" label="Nombre de la empresa" id="empresa" required auto-validate autocapitalize error-message="Este campo es obligatorio"></paper-input>
                 </form>
             </header>
-            <tk-evaluationbtn business="{{business}}"></tk-evaluationbtn>
+            <tk-evaluationbtn id="evaluationbtn" business="{{business}}"></tk-evaluationbtn>
             <div class="padding">
             <paper-textarea placeholder="Tu comentario" id="textarea" rows="4" maxlength="140"></paper-textarea>
             </div>
@@ -224,33 +224,36 @@
             },
 
             addSnippet: function () {
-
-
                 if (!this.$.jobReview.validate()) {
-                    this.msgError = 'El nombre de la empresa es importante';
-                    return false;
+                  this.msgError = 'El nombre de la empresa es importante';
+                    
+                  return false;
                 }
-                    if (this.business.qualification.length < 2){
-                        this.msgError = 'sd';
-                        return false;
-                   }
+                
+                if (this.business.qualification.length < 2){
+                  this.msgError = 'Escoge una calificación';
+                  
+                  return false;
+                }
+                
                 this.business.name = this.$.empresa.value;
                 this.business.comment = this.$.textarea.value;
 
                 if (this.$.togglebtn.checked) {
-                    this.business.usershow = "Jon Snow";
+                    this.business.usershow = 'Jon Snow';
                 }
 
                 else {
-                    this.business.usershow = "Anónimo";
+                    this.business.usershow = 'Anónimo';
                 }
-
-                this.push("collection", this.business);
-
+                
+                this.push('collection', this.business);
+                
                 this.$.job__form.close();
                 this.$.empresa.value = null;
                 this.$.textarea.value = null;
-                this.business.qualification = null;
+                
+                console.log(this.$.evaluationbtn);
             },
 
 
