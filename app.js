@@ -2,6 +2,7 @@
 
 const messages = require('./controllers/messages');
 const home = require('./controllers/home');
+const empresas = require('./controllers/empresas');
 const newuser = require('./controllers/newuser');
 const newpass = require('./controllers/newpass');
 const searchresult = require('./controllers/search-result');
@@ -32,6 +33,7 @@ app.use(route.get('/promise', messages.promise));*/
 
 app.use(route.get('/', home.home));
 app.use(route.get('/newuser', newuser.newuser));
+app.use(route.get('/empresas', empresas.empresas));
 app.use(route.get('/newpass', newpass.newpass));
 app.use(route.get('/search-result', searchresult.searchresult));
 app.use(route.get('/user', user.user));

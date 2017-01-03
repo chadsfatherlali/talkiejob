@@ -163,7 +163,7 @@
         <paper-dialog id="job__form" with-backdrop collection="{{collection}}">
             <header class="form__header">
                 <form is="iron-form" id="jobReview">
-            <paper-input type="text" label="Nombre de la empresa" id="empresa" required auto-validate autocapitalize error-message="Este campo es obligatorio"></paper-input>
+            <paper-input type="text" label="Nombre de la empresa" id="empresa" required autocapitalize error-message="Este campo es obligatorio"></paper-input>
                 </form>
             </header>
             <tk-evaluationbtn id="evaluationbtn" business="{{business}}"></tk-evaluationbtn>
@@ -229,12 +229,12 @@
                   this.msgError = 'El nombre de la empresa es importante';
                     
                   return false;
-                }
+                 }
 
-                    if (this.business.qualification.length < 2){
-                        this.msgError = 'Indicanos su grado de satisfacción mediante los 3 botones de arriba';
-                        return false;
-                   }
+                if (this.business.qualification.length < 2){
+                    this.msgError = 'Indicanos su grado de satisfacción mediante los 3 botones de arriba';
+                    return false;
+               }
                 this.business.name = this.$.empresa.value;
                 this.business.comment = this.$.textarea.value;
 
@@ -258,13 +258,15 @@
               else {
                 this.business.usershow = 'Anónimo';
               }
+
+              console.log(this.business);
               
               this.push('collection', this.business);
-              
+
               this.$.job__form.close();
               this.$.empresa.value = null;
               this.$.textarea.value = null;
-              this.business.qualification = '';
+
               
               this.$.evaluationbtn.querySelectorAll('.desactivebtn').forEach(function (_element) {
                 if (_element.active) {
@@ -274,6 +276,8 @@
             },
 
             openModal: function () {
+                this.msgError = "";
+                this.business.qualification = '';
               this.$.job__form.open();
             },
 

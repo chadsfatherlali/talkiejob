@@ -1,0 +1,92 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<dom-module id="tk-abc">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin-top: 25px;
+      }
+      nav ol {
+      padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+      }
+      nav ol li {
+        display: inline-block;
+        list-style: none;
+        padding: 10px;
+      }
+
+      nav ol li a {
+        display: block;
+        padding: 5px;
+        background-color: #fff;
+        border-radius: 4px;
+        color: #13a489;
+        text-decoration: none;
+        transition: background-color 0.2s linear;
+      }
+
+      nav ol li a:hover {
+        background-color: rgba(#ccc);
+      }
+
+      nav ol .activ a {
+        background-color: rgba(209, 96, 105, 0.9);
+        color: #fff;
+      }
+
+      nav ol .activ a:hover {
+        background-color: rgba(209, 96, 105, 1);
+        color: #fff;
+      }
+    </style>
+
+    <nav>
+      <ol>
+        <li class="activ"><a href="#">A</a></li>
+        <li><a href="#">B</a></li>
+        <li><a href="#">C</a></li>
+        <li><a href="#">D</a></li>
+        <li><a href="#">E</a></li>
+        <li><a href="#">F</a></li>
+        <li><a href="#">G</a></li>
+        <li><a href="#">H</a></li>
+        <li><a href="#">I</a></li>
+        <li><a href="#">J</a></li>
+        <li><a href="#">K</a></li>
+        <li><a href="#">L</a></li>
+        <li><a href="#">M</a></li>
+        <li><a href="#">N</a></li>
+        <li><a href="#">Ñ</a></li>
+        <li><a href="#">O</a></li>
+        <li><a href="#">P</a></li>
+        <li><a href="#">Q</a></li>
+        <li><a href="#">R</a></li>
+        <li><a href="#">S</a></li>
+        <li><a href="#">T</a></li>
+        <li><a href="#">U</a></li>
+        <li><a href="#">V</a></li>
+        <li><a href="#">W</a></li>
+        <li><a href="#">Z</a></li>
+      </ol>
+    </nav>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'tk-abc',
+      properties:{
+        collection: Array
+      }
+
+    });
+  </script>
+</dom-module>
